@@ -37,11 +37,11 @@ export default function BudgetBar() {
         marginBottom: 8,
       }}>
         <div>
-          <Text type="secondary" style={{ fontSize: 12 }}>
+          <Text type="secondary" style={{ fontSize: 16 }}>
             Budget Utilization
           </Text>
           <div>
-            <Text strong style={{ fontSize: 20 }}>
+            <Text strong style={{ fontSize: 36 }}>
               ${totalCost}
             </Text>
             <Text type="secondary"> / $1000</Text>

@@ -148,7 +148,7 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
     >
       
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-        <ShoppingCartOutlined style={{ fontSize: 18, color: "#1677ff" }} />
+        <ShoppingCartOutlined style={{ fontSize: 24, color: "#1677ff" }} />
         <Title level={5} style={{ margin: 0 }}>Build Summary</Title>
       </div>
 
@@ -174,9 +174,9 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
               }}
             >
               <div>
-                <Text strong style={{ fontSize: 13 }}>{item!.name}</Text>
+                <Text strong style={{ fontSize: 18 }}>{item!.name}</Text>
                 <br />
-                <Text type="secondary" style={{ fontSize: 11 }}>{item!.category}</Text>
+                <Text type="secondary" style={{ fontSize: 16 }}>{item!.category}</Text>
               </div>
               <Text strong style={{ color: "#1677ff" }}>${item!.price}</Text>
             </div>

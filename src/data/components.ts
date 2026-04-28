@@ -16,8 +16,6 @@ export const items: Item[] = [
     category: "CPU",
     incompatibleWith: ["mobo-1"],
   },
-
-  
   {
     id: "mobo-1",
     name: "Intel Motherboard",
@@ -32,8 +30,6 @@ export const items: Item[] = [
     category: "Motherboard",
     incompatibleWith: ["cpu-1"],
   },
-
-  
   {
     id: "ram-1",
     name: "16GB DDR4",
@@ -48,8 +44,4 @@ export const items: Item[] = [
     category: "RAM",
     incompatibleWith: [],
   },
-
-  
-  
- 
 ];
