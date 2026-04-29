@@ -6,7 +6,8 @@ import CategorySection from "./components/CategorySection";
 import BudgetBar from "./components/BudgetBar";
 import BuildSummary from "./components/BuildSummary";
 import Header from "./components/Header";
-import { items } from "./data/components";
+import { loadItems } from "./store/slices/apiSlice";
+// import { items } from "./data/components";
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
@@ -14,6 +15,14 @@ export default function App() {
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector((state) => state.build.isDarkMode);
   const summaryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    dispatch(loadItems());
+  }, [dispatch]);
+
+
+const items = useAppSelector((state) => state.items.items)
+
 
   // Keyboard Shortcuts
   useEffect(() => {

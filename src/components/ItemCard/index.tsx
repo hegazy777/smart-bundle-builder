@@ -1,11 +1,11 @@
 import { Avatar, Card, Tag, Typography } from "antd";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectItem } from "../../store/slices/buildSlice";
-import { items } from "../../data/components";
+// import { items } from "../../data/components";
 // import styles from "./index.module.css";
 import type { Item } from "../../types";
 import { CodepenOutlined  } from '@ant-design/icons'; 
-
+import styles from "./index.module.css"; 
 const { Text ,Title } = Typography;
 
 interface ItemCardProps {
@@ -15,6 +15,8 @@ interface ItemCardProps {
 export default function ItemCard({ item }: ItemCardProps) {
   const dispatch = useAppDispatch();
   const selections = useAppSelector((state) => state.build.selections);
+
+const items = useAppSelector((state) => state.items.items);
 
   // disabled ids of Items Incompatible
   const disabledIds = new Set<string>();
@@ -43,14 +45,15 @@ export default function ItemCard({ item }: ItemCardProps) {
 <Card
       onClick={handleClick}
       hoverable={!isDisabled}
-      style={{
-        borderRadius: "16px", 
-        cursor: isDisabled ? "not-allowed" : "pointer",
-        opacity: isDisabled ? 0.4 : 1,
-        border: isSelected ? "2px solid #1677ff" : "1px solid #eef0f2",
-        boxShadow: isSelected ? "0 4px 12px rgba(22, 119, 255, 0.1)" : "none",
-        transition: "all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)",
-      }}
+      className={`${styles.card}
+        ${isSelected ? styles.selected : ""}
+        ${isDisabled ? styles.disabled : ""}`}
+      // style={{
+      //   cursor: isDisabled ? "not-allowed" : "pointer",
+      //   opacity: isDisabled ? 0.4 : 1,
+      //   border: isSelected ? "2px solid #1677ff" : "2px solid #33333314",
+      //   boxShadow: isSelected ? "0 4px 12px rgba(22, 119, 255, 0.1)" : "none",
+      // }}
      
     >
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
