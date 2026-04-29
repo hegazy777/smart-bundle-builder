@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { Card, Typography, Button, Divider, Empty } from "antd";
 import { ShoppingCartOutlined, DeleteOutlined, FilePdfOutlined } from "@ant-design/icons";
 import jsPDF from "jspdf";
