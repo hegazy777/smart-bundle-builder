@@ -2,7 +2,7 @@ import type { Item } from "../types";
 
 const BASE_URL = "http://localhost:3001";
 
-// جيب كل الـ items من الـ server
+// get data from api
 export const fetchdata = async (): Promise<Item[]> => {
   const response = await fetch(`${BASE_URL}/items`);
   const data = await response.json();
@@ -10,14 +10,14 @@ export const fetchdata = async (): Promise<Item[]> => {
 };
 
 
-// جيب الـ draft المحفوظ
+// for old data saved
 export const fetchDraft = async (): Promise<Record<string, string>> => {
   const response = await fetch(`${BASE_URL}/userSelected`);
   const data = await response.json();
   return data.selections;
 };
 
-// احفظ الـ draft
+// save new data
 export const saveData = async (selections: Record<string, string>): Promise<void> => {
   await fetch(`${BASE_URL}/userSelected`, {
     method: "PUT",

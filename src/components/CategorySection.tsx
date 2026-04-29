@@ -14,9 +14,9 @@ interface CategorySectionProps {
 
 export default function CategorySection({ category, items }: CategorySectionProps) {
 
-    const selections = useAppSelector((state) => state.build.selections);
+    // const selections = useAppSelector((state) => state.build.selections);
 
-// const sele = JSON.stringify(selections[category])
+    // const sele = JSON.stringify(selections[category])
 
   return (
     <Card style={{ marginBottom: 32 }}>

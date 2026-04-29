@@ -41,22 +41,6 @@
       "price": 150,
       "category": "RAM",
       "incompatibleWith": []
-    },
-   
-    
-    {
-      "id": "ssd-1",
-      "name": "Samsung 1TB NVMe",
-      "price": 100,
-      "category": "Storage",
-      "incompatibleWith": []
-    },
-    {
-      "id": "ssd-2",
-      "name": "WD 2TB SSD",
-      "price": 120,
-      "category": "Storage",
-      "incompatibleWith": []
     }
     
   ],

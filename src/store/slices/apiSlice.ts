@@ -32,22 +32,24 @@ const itemsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
 
-    // builder.addCase(loadItems.pending, (state) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // });
+    // laoder
+    builder.addCase(loadItems.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
 
-    // نجح
+    // sucsess
     builder.addCase(loadItems.fulfilled, (state, action) => {
       state.isLoading = false;
       state.items  = action.payload;
     });
 
-    // // فشل
-    // builder.addCase(loadItems.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.error.message ?? "حصل خطأ";
-    // });
+        // sucsess
+
+    builder.addCase(loadItems.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message ?? "Error";
+    });
 
   },
 });

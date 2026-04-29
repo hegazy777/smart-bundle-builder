@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { resetBuild } from "../store/slices/buildSlice";
-import { items } from "../data/components";
+// import { items } from "../data/components";
 
 const { Title, Text } = Typography;
 const BUDGET = 1000;
@@ -17,7 +17,7 @@ interface BuildSummaryProps {
 export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
   const dispatch = useAppDispatch();
   const selections = useAppSelector((state) => state.build.selections);
-
+const items = useAppSelector((state) => state.items.items);
   const selectedItems = Object.values(selections)
     .map((selectedId) => items.find((i) => i.id === selectedId))
     .filter(Boolean);
@@ -34,32 +34,32 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
   });
 
   const pageWidth = pdf.internal.pageSize.getWidth();
-  let y = 40; // بنبدأ من فوق
+  let y = 40;
 
-  // ===== العنوان =====
+  //Address 
   pdf.setFontSize(22);
   pdf.setFont("helvetica", "bold");
-  pdf.setTextColor(22, 119, 255); // أزرق
+  pdf.setTextColor(22, 119, 255);
   pdf.text("Smart Bundle Builder", pageWidth / 2, y, { align: "center" });
 
   y += 10;
 
-  // ===== خط تحت العنوان =====
+  // head title
   pdf.setDrawColor(22, 119, 255);
   pdf.setLineWidth(1);
   pdf.line(40, y + 10, pageWidth - 40, y + 10);
 
   y += 30;
 
-  // ===== التاريخ =====
+  // date
   pdf.setFontSize(10);
   pdf.setFont("helvetica", "normal");
-  pdf.setTextColor(150, 150, 150); // رمادي
+  pdf.setTextColor(150, 150, 150); 
   pdf.text(`Generated: ${new Date().toLocaleDateString()}`, 40, y);
 
   y += 30;
 
-  // ===== عنوان القسم =====
+  // department adress
   pdf.setFontSize(13);
   pdf.setFont("helvetica", "bold");
   pdf.setTextColor(0, 0, 0);
@@ -67,24 +67,24 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
 
   y += 20;
 
-  // ===== header بتاع الجدول =====
-  pdf.setFillColor(22, 119, 255); // خلفية زرقاء
+  // tables
+  pdf.setFillColor(22, 119, 255); 
   pdf.rect(40, y, pageWidth - 80, 24, "F");
 
   pdf.setFontSize(11);
   pdf.setFont("helvetica", "bold");
-  pdf.setTextColor(255, 255, 255); // نص أبيض
+  pdf.setTextColor(255, 255, 255); 
   pdf.text("Component", 50, y + 16);
   pdf.text("Category", pageWidth / 2 - 40, y + 16);
   pdf.text("Price", pageWidth - 90, y + 16);
 
   y += 30;
 
-  // ===== الـ items =====
+  //Products
   selectedItems.forEach((item, index) => {
-    // خلفية متبادلة للصفوف
+    // add backgrond
     if (index % 2 === 0) {
-      pdf.setFillColor(245, 245, 245); // رمادي فاتح
+      pdf.setFillColor(245, 245, 245);
       pdf.rect(40, y - 12, pageWidth - 80, 24, "F");
     }
 
@@ -103,14 +103,14 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
 
   y += 10;
 
-  // ===== خط فاصل =====
+  // separeted Line
   pdf.setDrawColor(200, 200, 200);
   pdf.setLineWidth(0.5);
   pdf.line(40, y, pageWidth - 40, y);
 
   y += 20;
 
-  // ===== Total =====
+  // Total 
   pdf.setFillColor(240, 247, 255); // أزرق فاتح جداً
   pdf.rect(40, y - 14, pageWidth - 80, 32, "F");
 
@@ -124,7 +124,7 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
 
   y += 36;
 
-  // ===== Remaining =====
+  //  Remaining =====
   pdf.setFontSize(11);
   pdf.setFont("helvetica", "normal");
   pdf.setTextColor(150, 150, 150);
@@ -140,8 +140,7 @@ export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
   return (
     <Card
       style={{
-        position: "sticky",
-        top: 24,
+       
         borderRadius: 12,
         boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
       }}
