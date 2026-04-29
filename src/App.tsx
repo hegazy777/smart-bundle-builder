@@ -13,7 +13,6 @@ const { defaultAlgorithm, darkAlgorithm } = theme;
 export default function App() {
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector((state) => state.build.isDarkMode);
-  const summaryRef = useRef<HTMLDivElement>(null);
   const items = useAppSelector((state) => state.items.items);
 
   useEffect(() => {
@@ -72,7 +71,7 @@ export default function App() {
 
             <Col xs={24} lg={8}>
               <div
-                ref={summaryRef}
+                
                 style={{
                   position: "sticky",
                   top: 80,
