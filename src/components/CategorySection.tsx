@@ -1,7 +1,6 @@
-import { Typography, Divider, Card, Row } from "antd";
+import { Typography, Divider, Card, Row, Col } from "antd";
 import ItemCard from "./ItemCard";
 import type { Item } from "../types";
-import { useAppSelector } from "../store/hooks";
 
 const { Title } = Typography;
 
@@ -10,28 +9,22 @@ interface CategorySectionProps {
   items: Item[];
 }
 
-
-
-export default function CategorySection({ category, items }: CategorySectionProps) {
-
-    // const selections = useAppSelector((state) => state.build.selections);
-
-    // const sele = JSON.stringify(selections[category])
-
+export default function CategorySection({
+  category,
+  items,
+}: CategorySectionProps) {
   return (
     <Card style={{ marginBottom: 32 }}>
       <Title level={4} style={{ marginBottom: 12 }}>
-        {category} 
+        {category}
       </Title>
       <Divider style={{ margin: "0 0 16px 0" }} />
 
-      <Row style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-        gap: 8,
-      }}>
+      <Row gutter={[16, 16]}>
         {items.map((item) => (
-          <ItemCard key={item.id} item={item} />
+          <Col key={item.id} xs={24} sm={12} lg={8}>
+            <ItemCard item={item} />
+          </Col>
         ))}
       </Row>
     </Card>
