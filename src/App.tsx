@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ConfigProvider, theme, Row, Col } from "antd"; // ← ضيف Row و Col
+import { ConfigProvider, theme, Row, Col } from "antd"; 
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { undo, redo } from "./store/slices/buildSlice";
 import { loadItems } from "./store/slices/apiSlice";
@@ -79,7 +79,7 @@ export default function App() {
                   height: "fit-content",
                 }}
               >
-                <BuildSummary summaryRef={summaryRef} />
+                <BuildSummary  />
               </div>
             </Col>
           </Row>

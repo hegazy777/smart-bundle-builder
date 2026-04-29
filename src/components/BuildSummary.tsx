@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { Card, Typography, Button, Divider, Empty } from "antd";
 import { ShoppingCartOutlined, DeleteOutlined, FilePdfOutlined } from "@ant-design/icons";
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { resetBuild } from "../store/slices/buildSlice";
 // import { items } from "../data/components";
@@ -10,11 +9,9 @@ import { resetBuild } from "../store/slices/buildSlice";
 const { Title, Text } = Typography;
 const BUDGET = 1000;
 
-interface BuildSummaryProps {
-  summaryRef: React.RefObject<HTMLDivElement | null>;
-}
 
-export default function BuildSummary({ summaryRef }: BuildSummaryProps) {
+
+export default function BuildSummary() {
   const dispatch = useAppDispatch();
   const selections = useAppSelector((state) => state.build.selections);
 const items = useAppSelector((state) => state.items.items);
