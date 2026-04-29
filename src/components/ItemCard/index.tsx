@@ -4,9 +4,9 @@ import { selectItem } from "../../store/slices/buildSlice";
 // import { items } from "../../data/components";
 // import styles from "./index.module.css";
 import type { Item } from "../../types";
-import { CodepenOutlined  } from '@ant-design/icons'; 
-import styles from "./index.module.css"; 
-const { Text ,Title } = Typography;
+import { CodepenOutlined } from "@ant-design/icons";
+import styles from "./index.module.css";
+const { Text, Title } = Typography;
 
 interface ItemCardProps {
   item: Item;
@@ -16,7 +16,7 @@ export default function ItemCard({ item }: ItemCardProps) {
   const dispatch = useAppDispatch();
   const selections = useAppSelector((state) => state.build.selections);
 
-const items = useAppSelector((state) => state.items.items);
+  const items = useAppSelector((state) => state.items.items);
 
   // disabled ids of Items Incompatible
   const disabledIds = new Set<string>();
@@ -42,26 +42,32 @@ const items = useAppSelector((state) => state.items.items);
   };
 
   return (
-<Card
+    <Card
       onClick={handleClick}
       hoverable={!isDisabled}
       className={`${styles.card}
         ${isSelected ? styles.selected : ""}
         ${isDisabled ? styles.disabled : ""}`}
-      // style={{
-      //   cursor: isDisabled ? "not-allowed" : "pointer",
-      //   opacity: isDisabled ? 0.4 : 1,
-      //   border: isSelected ? "2px solid #1677ff" : "2px solid #33333314",
-      //   boxShadow: isSelected ? "0 4px 12px rgba(22, 119, 255, 0.1)" : "none",
-      // }}
-     
+        onKeyDown={(e) => {
+    if (e.key === "Enter" || e.key === " ") handleClick();
+  }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-        <Avatar 
-          shape="square" 
-          size={40} 
-          icon={<CodepenOutlined />} 
-          style={{ backgroundColor: "#f0f5ff", color: "#1677ff", borderRadius: "8px" }}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: 16,
+        }}
+      >
+        <Avatar
+          shape="square"
+          size={40}
+          icon={<CodepenOutlined />}
+          style={{
+            backgroundColor: "#f0f5ff",
+            color: "#1677ff",
+            borderRadius: "8px",
+          }}
         />
         <Text strong style={{ fontSize: "20px" }}>
           ${item.price}
@@ -72,10 +78,12 @@ const items = useAppSelector((state) => state.items.items);
           {item.name}
         </Title>
       </div>
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap" , marginTop:24}}>
-        {isIncompatible && <Tag color="error" >Incompatible</Tag>}
-        {isOverBudget && <Tag color="warning" >Over Budget</Tag>}
-        {isSelected && <Tag color="blue" >Selected ✓</Tag>}
+      <div
+        style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}
+      >
+        {isIncompatible && <Tag color="error">Incompatible</Tag>}
+        {isOverBudget && <Tag color="warning">Over Budget</Tag>}
+        {isSelected && <Tag color="blue">Selected ✓</Tag>}
       </div>
     </Card>
   );

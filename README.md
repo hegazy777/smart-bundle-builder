@@ -63,8 +63,8 @@ If the user undoes and then makes a new selection, all future history is discard
 This is handled using `.slice(0, historyIndex + 1)` before pushing the new snapshot
 
 ## ⚡ Key Features
-### Dark Mode
 ### Keyboard Shortcuts
+### Dark Mode
 ### PDF Export | Download a formatted build summary as PDF using jsPDF |
 ### Mock Backend
 ### Responsive 
