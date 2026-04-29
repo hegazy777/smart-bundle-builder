@@ -1,6 +1,6 @@
 import { Card, Progress, Typography } from "antd";
 import { useAppSelector } from "../store/hooks";
-import { items } from "../data/components";
+// import { items } from "../data/components";
 
 const { Text } = Typography;
 
@@ -9,7 +9,10 @@ const BUDGET = 1000;
 export default function BudgetBar() {
   const selections = useAppSelector((state) => state.build.selections);
 
-  // Total Mony
+
+  const items = useAppSelector((state) => state.items.items);
+
+  // Total Cost
   const totalCost = Object.values(selections).reduce((sum, selectedId) => {
     const item = items.find((i) => i.id === selectedId);
     return sum + (item?.price ?? 0);
@@ -57,7 +60,7 @@ export default function BudgetBar() {
               strong
               style={{
                 fontSize: 20,
-                color: remaining < 100 ? "#ff4d4f" : "var(--ant-color-text)",
+                color: remaining < 90 ? "#ff4d4f" : "var(--ant-color-text)",
               }}
             >
               ${remaining}

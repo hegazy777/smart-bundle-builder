@@ -1,4 +1,3 @@
-import React from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { DesktopOutlined, MoonOutlined, RedoOutlined, SunOutlined, UndoOutlined } from '@ant-design/icons';
 import { Button, Switch, Tooltip, Typography } from 'antd';
