@@ -1,25 +1,10 @@
 import { Card, Progress, Typography } from "antd";
-import { useAppSelector } from "../store/hooks";
-// import { items } from "../data/components";
-
+import { useBuild } from "../hooks/useBuild";
 const { Text } = Typography;
 
-const BUDGET = 1000;
 
 export default function BudgetBar() {
-  const selections = useAppSelector((state) => state.build.selections);
-
-
-  const items = useAppSelector((state) => state.items.items);
-
-  // Total Cost
-  const totalCost = Object.values(selections).reduce((sum, selectedId) => {
-    const item = items.find((i) => i.id === selectedId);
-    return sum + (item?.price ?? 0);
-  }, 0);
-
-  const remaining = BUDGET - totalCost;
-  const percentage = Math.round((totalCost / BUDGET) * 100);
+const { totalCost, remaining, percentage } = useBuild();
 
   // progress bar 
   const color =

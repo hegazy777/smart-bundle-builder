@@ -25,6 +25,7 @@ export default function ItemCard({ item }: ItemCardProps) {
     selectedItem?.incompatibleWith.forEach((id) => disabledIds.add(id));
   });
 
+
   // total cost
   const totalCost = Object.values(selections).reduce((sum, selectedId) => {
     const selectedItem = items.find((i) => i.id === selectedId);
